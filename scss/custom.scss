@@ -1,0 +1,21 @@
+
+
+
+// $primary: #c2d844;
+$accordion-button-active-bg: #74bee9 ;
+$accordion-button-active-color: #000000 ;
+$accordion-button-focus-box-shadow: #212529 ;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-colors: (
+  "rojito": #900
+);
+
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
