@@ -2,19 +2,17 @@ import { useState } from 'react';
 import './App.css'
 import { DataTypes } from './components/DataTypes'
 import { DisplayQr } from './components/Display'
-import { QrOptions } from './components/Options'
+import { Accordion } from './components/Accordion'
 import { Link } from './components/Link';
 import { Email } from './components/Email';
-import { useCodeGenerator } from './hooks/useCodeGenerator';
 
 function App() {
   const [selectedType, setSelectedType] = useState('Link');
-  const { qrImage, download, updateQRCode } = useCodeGenerator()
 
   const renderSelectedType = () => {
     switch (selectedType) {
       case 'Link':
-        return <Link updateQRCode={updateQRCode} />;
+        return <Link />;
       case 'Email':
         return <Email />;
       case 'Phone':
@@ -36,11 +34,11 @@ function App() {
 
             <DataTypes setSelectedType={setSelectedType}/>
             {renderSelectedType()}
-            <QrOptions />
+            <Accordion />
           </div>
 
           <div className="col-4 h-100 d-flex align-items-center p-4">
-            <DisplayQr qrImage={qrImage} download={download} />
+            <DisplayQr />
           </div>
 
         </div>

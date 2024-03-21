@@ -1,16 +1,19 @@
-import { CornersSquare } from "./qrOptions/CornersSquare";
-import { Dots } from "./qrOptions/Dots";
+
+import { Dots } from "./accordionOptions/Dots";
+import { QrOptions } from "./accordionOptions/QrOptions";
 
 
-const options = [
-  { name: 'Dots options', component: <Dots /> },
-  { name: 'Corners square options', component: <CornersSquare /> },
-  { name: 'Corners dot options', component: <div>Contenido</div> },
-  { name: 'Background options', component: <div>Contenido</div> },
-  { name: 'Logo option', component: <div>Contenido</div> },
-];
 
-export const QrOptions = () => {
+
+export const Accordion = () => {
+
+  const options = [
+    { name: 'Dots options', property: 'dotsOptions' },
+    { name: 'Corners square options', property: 'cornersSquareOptions'  },
+    { name: 'Corners dot options', property: 'cornersDotOptions' },
+    { name: 'Background options', property: 'backgroundOptions' },
+  ];
+
   return (
     <>
       <div className="accordion w-100 m-auto" id="accordionExample">
@@ -23,7 +26,9 @@ export const QrOptions = () => {
             </h2>
             <div id={`collapse${index}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
               <div className="accordion-body">
-                {option.component}
+
+              <QrOptions property={option.property} />
+                
               </div>
             </div>
           </div>

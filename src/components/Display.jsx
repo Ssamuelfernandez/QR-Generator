@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useCodeGenerator } from "../hooks/useCodeGenerator";
+import { useContext, useState } from "react";
+import { AppContext } from "../context/AppContext";
 
-export const DisplayQr = ({qrImage, download}) => {
+export const DisplayQr = () => {
+  const { download, qrImage } = useContext(AppContext);
   const [fileExtension, setFileExtension] = useState('png');
   const [fileName, setFileName] = useState('');
 
@@ -25,9 +26,13 @@ export const DisplayQr = ({qrImage, download}) => {
 
         <h3 className='m-3 m-auto'>QR Code Generator</h3>
 
-        <div className="d-flex align-items-center justify-content-center m-auto" style={{ width: '300px', height: '300px' }}>
+        <div className="d-flex align-items-center justify-content-center m-auto" style={{ width: '250px', height: '250px' }}>
           {qrImage ? <img src={qrImage} alt="QR Code" style={{ maxWidth: '100%', maxHeight: '100%' }} /> : <i className="fa-solid fa-qrcode"></i>}
         </div>
+
+        <p>Aquí el tamaño y margen</p>
+        <p>Aquí subida logo y fondo tras logo</p>
+        <p>Grado de error en el qr (?)</p>
 
         <div className="d-flex flex-column justify-content-center align-items-center gap-2 m-auto">
           <div className="d-flex gap-4">

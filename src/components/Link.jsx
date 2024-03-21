@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../context/AppContext';
 
-export const Link = ({updateQRCode}) => {
+export const Link = () => {
+
+    const { updateQRCode } = useContext(AppContext);
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (event) => {

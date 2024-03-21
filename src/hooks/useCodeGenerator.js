@@ -38,7 +38,6 @@ const qrCode = useRef(new QRCodeStyling(options));
     }
   };
 
-
   // Usar el método download para descargar el código QR
   const download = (name, extension) => {
     qrCode.current.download({ name, extension });
