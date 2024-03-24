@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './App.css'
-import { DataTypes } from './components/DataTypes'
-import { DisplayQr } from './components/Display'
-import { Accordion } from './components/Accordion'
-import { Link } from './components/Link';
-import { Email } from './components/Email';
+import { DataTypes } from './components/dataTypes/DataTypes'
+import { DisplayQr } from './components/display/Display'
+import { Accordion } from './components/accordionOptions/Accordion'
+import { Link } from './components/dataTypes/Link';
+import { Email } from './components/dataTypes/Email';
 
 function App() {
   const [selectedType, setSelectedType] = useState('Link');

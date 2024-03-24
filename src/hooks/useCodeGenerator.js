@@ -4,27 +4,49 @@ import { useEffect, useRef, useState } from "react";
 export const useCodeGenerator = () => {
 
   const [qrImage, setQrImage] = useState(null);
-  
 
-  const options = {
+  const defaultOptions = {
     width: 300,
     height: 300,
     type: "svg",
     data: "https://www.linkedin.com/in/samuelfern%C3%A1ndezsep%C3%BAlveda/",
     image: "",
-    dotsOptions: {
-      color: "#4267b2",
-      type: "rounded"
-    },
-    backgroundOptions: {
-      color: "#e9ebee",
-    },
-    imageOptions: {
-      crossOrigin: "anonymous",
-      margin: 20
-    }
+    margin: "",
+    qrOptions: { errorCorrectionLevel: 'Q'},
+    dotsOptions: { type: 'square', color: '#4267b2', gradient: null },
+    cornersSquareOptions: { type: 'square', color: '#4267b2', gradient: null },
+    cornersDotOptions: { type: 'square', color: '#4267b2', gradient: null },
+    backgroundOptions: { color: '#ffffff', gradient: null }
   };
-const qrCode = useRef(new QRCodeStyling(options));
+
+  const [formOptions, setFormOptions] = useState(defaultOptions);
+
+  const qrCode = useRef(new QRCodeStyling(formOptions));
+
+  // Función para actualizar el código QR
+  const updateOption = (optionName, newValues) => {
+    setFormOptions(prevOptions => {
+      if (typeof prevOptions[optionName] === 'object' && prevOptions[optionName] !== null) {
+        return {
+          ...prevOptions,
+          [optionName]: {
+            ...prevOptions[optionName],
+            ...newValues
+          }
+        };
+      } else {
+        return {
+          ...prevOptions,
+          [optionName]: newValues
+        };
+      }
+    });
+  };
+
+  useEffect(() => {
+    qrCode.current.update(formOptions);
+    generateQRCode();
+  }, [formOptions]);
 
   // Usar el método getRawData para obtener los datos en bruto del código QR
   const generateQRCode = async () => {
@@ -43,18 +65,6 @@ const qrCode = useRef(new QRCodeStyling(options));
     qrCode.current.download({ name, extension });
   };
 
-  // Función para actualizar el código QR
-  const updateQRCode = (newOptions) => {
-    qrCode.current.update( newOptions );
-    generateQRCode();
-  };
-
-
-useEffect(() => {
-    generateQRCode();
-  }, []);
-
-
-  return { download, qrImage, updateQRCode }
+  return { download, qrImage, updateOption, defaultOptions }
 
 };

@@ -1,17 +1,12 @@
-
-import { Dots } from "./accordionOptions/Dots";
-import { QrOptions } from "./accordionOptions/QrOptions";
-
-
-
+import { QrOptions } from "./QrOptions";
 
 export const Accordion = () => {
 
   const options = [
-    { name: 'Dots options', property: 'dotsOptions' },
-    { name: 'Corners square options', property: 'cornersSquareOptions'  },
-    { name: 'Corners dot options', property: 'cornersDotOptions' },
-    { name: 'Background options', property: 'backgroundOptions' },
+    { name: 'Dots options', property: {name: 'dotsOptions', type: ['rounded', 'dots', 'classy', 'classy-rounded', 'square', 'extra-rounded']} },
+    { name: 'Corners square options', property: {name: 'cornersSquareOptions', type: ['dot', 'square', 'extra-rounded']} },
+    { name: 'Corners dot options', property: {name: 'cornersDotOptions', type: ['dot', 'square']} },
+    { name: 'Background options', property: {name: 'backgroundOptions'} },
   ];
 
   return (

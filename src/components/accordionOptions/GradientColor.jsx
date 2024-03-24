@@ -1,23 +1,26 @@
+import { useContext, useState } from "react";
+import { AppContext } from "../../context/AppContext";
 
-export const GradientColor = () => {
-  const [dotsOptions, setDotsOptions] = useState({ gradient: { type: 'linear', rotation: 0, colorStops: [{ offset: 0, color: '#5f9ea0' }, { offset: 1, color: '#5f69a0' }]}});
+export const GradientColor = ({optionName, gradientOptions}) => {
+  const { updateOption } = useContext(AppContext);
+
+
+  const [gradientSwitch, setGradientSwitch] = useState('linear');
 
   const handleGradientTypeChange = (event) => {
-    setGradientSwitch(event.target.checked ? 'Radial' : 'Linear');
-    setDotsOptions(prevState => ({ ...prevState, gradient: { ...prevState.gradient, type: event.target.value } }));
-}
+    setGradientSwitch(event.target.checked ? 'radial' : 'linear');
+    updateOption(optionName, { ...gradientOptions, gradient: { ...gradientOptions.gradient, type: event.target.checked ? 'radial' : 'linear' } });
+  };
 
-const handleGradientColorChange = (event, index) => {
-    setDotsOptions(prevState => {
-        const newColorStops = [...prevState.gradient.colorStops];
-        newColorStops[index] = event.target.value;
-        return { ...prevState, gradient: { ...prevState.gradient, colorStops: newColorStops } };
-    });
-}
+  const handleGradientColorChange = (event, index) => {
+    const newColorStops = [...gradientOptions.gradient.colorStops];
+    newColorStops[index].color = event.target.value;
+    updateOption(optionName, { ...gradientOptions, gradient: { ...gradientOptions.gradient, colorStops: newColorStops } });
+  };
 
-const handleGradientRotationChange = (event) => {
-    setDotsOptions(prevState => ({ ...prevState, gradient: { ...prevState.gradient, rotation: event.target.value } }));
-}
+  const handleGradientRotationChange = (event) => {
+    updateOption(optionName, { ...gradientOptions, gradient: { ...gradientOptions.gradient, rotation: event.target.value } });
+  };
 
 
   return (
@@ -29,16 +32,17 @@ const handleGradientRotationChange = (event) => {
         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{gradientSwitch} gradient</label>
       </div>
 
-      <div className="d-flex gap-2 align-items-center justify-content-center ">
-        <label htmlFor="exampleColorInput1" className="form-label">Gradient color</label>
-        <input type="color" className="form-control form-control-color" id="exampleColorInput1" value={dotsOptions.gradient.colorStops[0]} title="Choose your color" onChange={(event) => handleGradientColorChange(event, 0)}></input>
-        <input type="color" className="form-control form-control-color" id="exampleColorInput2" value={dotsOptions.gradient.colorStops[1]} title="Choose your color" onChange={(event) => handleGradientColorChange(event, 1)}></input>
-      </div>
-
       <div className="d-flex gap-2 align-items-center justify-content-center">
         <label htmlFor="customRange1" className="form-label">Rotation</label>
         <input type="range" className="form-range" id="customRange1" onChange={handleGradientRotationChange}></input>
       </div>
+
+      <div className="d-flex gap-2 align-items-center justify-content-center ">
+        <label htmlFor="exampleColorInput1" className="form-label">Gradient color</label>
+        <input type="color" className="form-control form-control-color" id="exampleColorInput1" value={gradientOptions.gradient.colorStops[0].color} title="Choose your color" onChange={(event) => handleGradientColorChange(event, 0)}></input>
+        <input type="color" className="form-control form-control-color" id="exampleColorInput2" value={gradientOptions.gradient.colorStops[1].color} title="Choose your color" onChange={(event) => handleGradientColorChange(event, 1)}></input>
+      </div>
+
 
     </div>
   )
