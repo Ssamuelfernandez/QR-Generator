@@ -1,9 +1,5 @@
-
-export const Type = ({type, name, onClick}) => {
-    
+export const Type = ({type, name, onClick, isSelected}) => {
   return (
-
-    <button onClick={onClick} className="btn btn-outline-secondary border-2" style={{width: '100px'}}>{type} {name}</button>
-
+    <button onClick={onClick} className={`btn shadow ${isSelected ? 'btn-secondary' : 'btn-outline-secondary'} border-2`} style={{width: '120px'}}>{type} {name}</button>
   )
 }

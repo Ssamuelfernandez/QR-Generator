@@ -1,16 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container-fluid {
-  background-image: url('./assets/background.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #ffffff;
+.backgroundImage {
+  background: #a8bcbd;
+  /* background: linear-gradient(141deg, rgba(168,188,189,1) 0%, rgba(255,255,255,1) 100%); */
+  background: radial-gradient(circle, #a8bcbd 0%, #ffffff 100%);
 }
 
+.title {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
+.madeBy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
 
+.madeBy a {
+  color: #25b9ad;
+}
+
+.madeBy a:hover {
+  color: #0e867c;
+}
 

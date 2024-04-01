@@ -20,21 +20,22 @@ export const Dowload = () => {
     setFileName(event.target.value);
   }
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center gap-2 m-auto">
-      <div className="d-flex gap-4">
+    <div className=" container d-flex flex-column justify-content-center align-items-center gap-2">
 
-        <button onClick={handleDownload} className="btn border-2 btn-outline-secondary">Download</button>
+      <div className="d-flex gap-2 w-100">
 
-        <select onChange={handleSelectChange} className="form-select" aria-label="Select extension" defaultValue="png">
+        <button onClick={handleDownload} className="btn border-2 btn-outline-primary w-50">Download</button>
+
+        <select onChange={handleSelectChange} className="form-select w-50" aria-label="Select extension" defaultValue="png">
           <option value="png">.png</option>
           <option value="jpeg">.jpeg</option>
           <option value="svg">.svg</option>
         </select>
       </div>
 
-      <div>
+      <div className="w-100">
         <input
-          className="form-control "
+          className="form-control"
           placeholder="File name"
           aria-describedby="inputNameHelp"
           value={fileName}

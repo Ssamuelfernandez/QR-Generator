@@ -20,20 +20,23 @@ export const Link = () => {
 
     return (
         <>
-            <h3 htmlFor="inputLink" className="form-label">Submit URL</h3>
+        <div className=' py-4'>
+                <h3 htmlFor="inputLink" className="form-label pb-4">Generate Url</h3>
 
-            <input
-                id="inputLink"
-                className="form-control"
-                placeholder="https://"
-                aria-describedby="inputLinkHelp"
-                value={inputValue}
-                onChange={handleInputChange}
-            />
+                <input
+                    id="inputLink"
+                    className="form-control shadow"
+                    placeholder="https://"
+                    aria-describedby="inputLinkHelp"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                />
 
-            <div id="inputLinkHelp" className="form-text">
-                Generate a QR code directly from a URL.
-            </div>
+                <div id="inputLinkHelp" className="form-text">
+                    Generate a QR code directly from a URL.
+                </div>
+        </div>
+            
 
         </>
     )

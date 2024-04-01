@@ -5,17 +5,18 @@ export const useCodeGenerator = () => {
 
   const [qrImage, setQrImage] = useState(null);
 
+  // Opciones por defecto para el código QR
   const defaultOptions = {
     width: 300,
     height: 300,
     type: "svg",
     data: "https://www.linkedin.com/in/samuelfern%C3%A1ndezsep%C3%BAlveda/",
-    image: "",
+    image: "public/linkedin.svg",
     margin: "",
     qrOptions: { errorCorrectionLevel: 'Q'},
-    dotsOptions: { type: 'square', color: '#4267b2', gradient: null },
-    cornersSquareOptions: { type: 'square', color: '#4267b2', gradient: null },
-    cornersDotOptions: { type: 'square', color: '#4267b2', gradient: null },
+    dotsOptions: { type: 'square', color: '#A8BCBD', gradient: null },
+    cornersSquareOptions: { type: 'square', color: '#333333', gradient: null },
+    cornersDotOptions: { type: 'square', color: '#333333', gradient: null },
     backgroundOptions: { color: '#ffffff', gradient: null }
   };
 
