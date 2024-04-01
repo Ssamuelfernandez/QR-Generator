@@ -11,7 +11,7 @@ export const useCodeGenerator = () => {
     height: 300,
     type: "svg",
     data: "https://www.linkedin.com/in/samuelfern%C3%A1ndezsep%C3%BAlveda/",
-    image: "public/linkedin.svg",
+    image: "linkedin.svg",
     margin: "",
     qrOptions: { errorCorrectionLevel: 'Q'},
     dotsOptions: { type: 'square', color: '#A8BCBD', gradient: null },
