@@ -1,4 +1,4 @@
-# QR App Generator
+# ⭐ QR App Generator
 
 This project is an application designed to generate QR codes using the nvp-qr-code-styling library.
 <br>
